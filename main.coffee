@@ -12,7 +12,7 @@ class XmlBuilder
   buildWith: (data) =>
     xml = @xml
     _.forOwn data, (value, key) =>
-      xml = xml.replace /\$#{key}/g,
+      xml = xml.replace new RegExp("\\$#{key}", "g"),
         switch typeof value
           when "string", "number" then value
           else
