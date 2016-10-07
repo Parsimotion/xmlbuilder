@@ -14,7 +14,7 @@ class XmlBuilder
     _.forOwn data, (value, key) =>
       xml = xml.replace new RegExp("\\$#{key}", "g"),
         switch typeof value
-          when "string", "number" then value
+          when "string", "number", "boolean" then value
           else
             (value?.map (element) =>
               content = _(element)
