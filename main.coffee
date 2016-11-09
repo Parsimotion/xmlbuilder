@@ -12,6 +12,9 @@ class XmlBuilder
   buildWith: (data) =>
     xml = @xml
     _.forOwn data, (value, key) =>
+      if typeof value is "object"
+        value = value.toString()
+
       xml = xml.replace new RegExp("\\$#{key}", "g"),
         switch typeof value
           when "string", "number", "boolean" then value
